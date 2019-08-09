@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+
+<h2>AVX HitCount Update</h2>
+
+<form  method="POST">
+  AVX Node Ip<br>
+  <input type="text" name="ip" value="192.168.96.39">
+  <br>
+  username:<br>
+  <input type="text" name="uname" value="appviewx">
+  <br>
+   password:<br>
+  <input type="password" name="pwd" value="HLIjZL7JJ9"><br>
+  <br>
+  <input type="submit" value="Submit">
+</form> 
+
+<br/><br/><br/>
+<span id="placeholderForPolicyList"></span>
+<br/>
+<span id="placeholderForUpdate"></span>
+<script>
+      $(function () {
+        $('form').on('submit', function (e) {
+          e.preventDefault();
+          $.ajax({
+            type: 'post',
+            url: '/getHitCountData',
+            data: $('form').serialize(),
+            success: function (response) {		
+			document.getElementById("placeholderForPolicyList").innerHTML = response;
+            }
+          });
+
+        });
+
+      });
+	function updateHitcount(e){
+  document.getElementById("placeholderForUpdate").innerHTML = "updated hit count..."
+	e.preventDefault()
+	$.ajax({
+		type:'get',
+		url: '/updateHitcount?policyName=' + e.srcElement.innerText,
+		success: function(response){
+			document.getElementById("placeholderForUpdate").innerHTML = response;
+		}
+	});
+	}
+    </script>
+
+</body>
+</html>

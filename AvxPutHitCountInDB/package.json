@@ -1,0 +1,14 @@
+{
+  "name": "updatehitcount",
+  "version": "1.0.0",
+  "description": "Updates the hit count in database(automated)",
+  "main": "app.js",
+  "author": "kishorekumar shanmugam",
+  "license": "ISC","bin": "bin.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mongodb": "^3.2.3",
+    "pkg": "^4.4.0"
+  }
+}
