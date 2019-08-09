@@ -10,7 +10,7 @@
     "express-session": "^1.16.1",
     "mongodb": "^3.2.3",
     "pkg": "^4.4.0"
-  }
+  },
   "pkg": {
     "assets": "html/**"
   }
