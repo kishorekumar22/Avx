@@ -17,6 +17,9 @@ app.use(session({
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname+'/html/input.html'));
 });
+app.get('/jQuery', function(req, res) {
+    res.sendFile(path.join(__dirname+'/scripts/jQuery.js'));
+});
 
 app.post("/getHitCountData", function(req, res) {
 
@@ -41,8 +44,9 @@ app.post("/getHitCountData", function(req, res) {
 				var dbo = db.db("appviewx")
 					dbo.collection("firewallStats").distinct("policyName",function(err, result) {
 						if (err) throw err;
-						var htmlString = "<h3>Policies in DB</h3><br/>"
-						result.forEach(function(r){htmlString += "<a href='#' id="+r+" onclick='return updateHitcount(event)'>"+r+"</a><br/>"});
+						var htmlString = "<h3>Policies in DB</h3><p><i>Please click on the policy to randomly update hits for the policy</i></p><table><tr><th>S.No</th><th>Policyname</th></td>"
+						result.forEach(function(pol,i){htmlString += "<tr><td>"+(i+1)+"</td><td><a href='#' id="+pol+" onclick='return updateHitcount(event)'>"+pol+"</a></tr>"});
+	htmlString+="</table>"
 						res.send(htmlString);
 						db.close();
 					});
@@ -55,10 +59,11 @@ app.post("/getHitCountData", function(req, res) {
 			var dbo = db.db("appviewx")
 				dbo.collection("firewallStats").distinct("policyName",function(err, result) {
 					if (err) throw err;
-					var htmlString = "<h3>Policies in DB</h3><br/>"
-					result.forEach(function(r){htmlString += "<a href='#' id="+r+" onclick='return updateHitcount(event)'>"+r+"</a><br/>"});
-					res.send(htmlString);
-					db.close();
+					var htmlString = "<h3>Policies in DB</h3><p><i>Please click on the policy to randomly update hits for the policy</i></p><table><tr><th>S.No</th><th>Policyname</th></td>"
+						result.forEach(function(pol,i){htmlString += "<tr><td>"+(i+1)+"</td><td><a href='#' id="+pol+" onclick='return updateHitcount(event)'>"+pol+"</a></tr>"});
+	htmlString+="</table>"
+						res.send(htmlString);
+						db.close();
 				});
 			}
 	});
@@ -86,7 +91,7 @@ app.get('/updateHitcount', function(req, res) {
 								});
 						
 						}
-					res.send("Updated Hit count data for  : " +  req.query.policyName );
+					res.send("<p style='color:red' ><b>Updated Hit count data for  : " +  req.query.policyName +"</b></p>");
 					db.close();
 				});
 			}
@@ -94,3 +99,4 @@ app.get('/updateHitcount', function(req, res) {
 });
 const server = app.listen(7000);
 console.log("Application start in the port : 7000");
+console.log("Please use localhost:7000 to access")

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script  type="text/javascript" src="/jQuery"></script>
+<style>
+table, th, td {
+  border: 1px solid black;
+}</style>
 </head>
 <body>
 
-<h2>AVX HitCount Update</h2>
+<h2>AppViewX HitCount Update</h2>
 
 <form  method="POST">
-  AVX Node Ip<br>
-  <input type="text" name="ip" value="192.168.96.39">
+  <b>Avx Node Ip :</b> <input type="text" name="ip" value="192.168.96.191">
+	<p style="margin-top:0"><i>*Appviewx node Ip address</i></p>
   <br>
-  username:<br>
-  <input type="text" name="uname" value="appviewx">
+  <b>Username:</b> <input type="text" name="uname" value="appviewx">
+	<p style="margin-top:0"><i>*Primary DB username(could be found in /home/appviewx/appviewx/scripts/.mongo_users)</i></p>
   <br>
-   password:<br>
-  <input type="password" name="pwd" value="HLIjZL7JJ9"><br>
-  <br>
+   <b>Password:</b>  <input type="password" name="pwd" value="dWaWTGidm3"><br>
+	<p style="margin-top:0"><i>*Equivalent password (could be found in /home/appviewx/appviewx/scripts/.mongo_users)</i></p>
   <input type="submit" value="Submit">
 </form> 
 
-<br/><br/><br/>
+<br/>
 <span id="placeholderForPolicyList"></span>
 <br/>
 <span id="placeholderForUpdate"></span>
